@@ -3,6 +3,7 @@
   "endpoints": [
     "{first}",
     "{first}/{second}",
-    "{first}/{second}/{third}"
+    "{first}/{second}/{third}",
+    "{first}/{second}/{third}/{fourth}"
   ]
 }
