@@ -23,25 +23,6 @@
     {{ end }}
     {{ end }}
 
-    {{ range $method := .endpoint_openlibrary.methods }}
-    {{ range $endpoint := $.endpoint_openlibrary.endpoints }}
-    {
-      "endpoint": "/openlibrary/{{ $endpoint }}",
-      "method": "{{ $method }}",
-      "output_encoding": "no-op",
-      "querystring_params": ["*"],
-      "headers_to_pass":["*"],
-      "backend": [
-        {
-          "encoding": "no-op",
-          "host": ["{{ $.service.hosts.openlibrary }}"],
-          "url_pattern": "/api/{{ $endpoint }}"
-        }
-      ]
-    },
-    {{ end }}
-    {{ end }}
-
     {{ range $method := .endpoint_therapist.methods }}
     {{ range $endpoint := $.endpoint_therapist.endpoints }}
     {
