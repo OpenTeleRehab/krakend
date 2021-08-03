@@ -2,6 +2,7 @@
   "port": 8000,
   "hosts": {
     "admin": "admin_service",
+    "hicadmin": "openlibrary_service",
     "therapist": "therapist_service",
     "patient": "patient_service",
     "patient_vn": "patient_vn_service"
