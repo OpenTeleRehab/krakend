@@ -61,6 +61,25 @@
     {{ end }}
     {{ end }}
 
+    {{ range $method := .endpoint_phone.methods }}
+    {{ range $endpoint := $.endpoint_phone.endpoints }}
+    {
+      "endpoint": "/phone/{{ $endpoint }}",
+      "method": "{{ $method }}",
+      "output_encoding": "no-op",
+      "querystring_params": ["*"],
+      "headers_to_pass":["*"],
+      "backend": [
+        {
+          "encoding": "no-op",
+          "host": ["{{ $.service.hosts.phone }}"],
+          "url_pattern": "/api/{{ $endpoint }}"
+        }
+      ]
+    },
+    {{ end }}
+    {{ end }}
+
     {{ range $method := .endpoint_patient.methods }}
     {{ range $endpoint := $.endpoint_patient.endpoints }}
     {
