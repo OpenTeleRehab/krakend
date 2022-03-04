@@ -6,7 +6,7 @@
     "patient": "patient_service",
     "patient_vn": "patient_vn_service",
     "library": "library_service",
-    "phone": "patient_phone_service"
+    "phone": "phone_service"
   },
   "extra_config": {
     "github_com/devopsfaith/krakend-cors": {
