@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "timeout": "120s",
   "port": {{ .service.port }},
   "extra_config": {{ marshal .service.extra_config }},
@@ -10,8 +10,8 @@
       "endpoint": "/admin/{{ $endpoint }}",
       "method": "{{ $method }}",
       "output_encoding": "no-op",
-      "querystring_params": ["*"],
-      "headers_to_pass":["*"],
+      "input_query_strings": ["*"],
+      "input_headers":["*"],
       "backend": [
         {
           "encoding": "no-op",
@@ -29,8 +29,8 @@
       "endpoint": "/library/{{ $endpoint }}",
       "method": "{{ $method }}",
       "output_encoding": "no-op",
-      "querystring_params": ["*"],
-      "headers_to_pass":["*"],
+      "input_query_strings": ["*"],
+      "input_headers":["*"],
       "backend": [
         {
           "encoding": "no-op",
@@ -48,8 +48,8 @@
       "endpoint": "/therapist/{{ $endpoint }}",
       "method": "{{ $method }}",
       "output_encoding": "no-op",
-      "querystring_params": ["*"],
-      "headers_to_pass":["*"],
+      "input_query_strings": ["*"],
+      "input_headers":["*"],
       "backend": [
         {
           "encoding": "no-op",
@@ -67,8 +67,8 @@
       "endpoint": "/phone/{{ $endpoint }}",
       "method": "{{ $method }}",
       "output_encoding": "no-op",
-      "querystring_params": ["*"],
-      "headers_to_pass":["*"],
+      "input_query_strings": ["*"],
+      "input_headers":["*"],
       "backend": [
         {
           "encoding": "no-op",
@@ -86,15 +86,15 @@
       "endpoint": "/patient/{{ $endpoint }}",
       "method": "{{ $method }}",
       "output_encoding": "no-op",
-      "querystring_params": ["*"],
-      "headers_to_pass":["*"],
+      "input_query_strings": ["*"],
+      "input_headers":["*"],
       "backend": [
         {
           "encoding": "no-op",
           "host": ["{{ $.service.hosts.patient }}"],
           "url_pattern": "/api/{{ $endpoint }}",
           "extra_config": {
-            "github.com/devopsfaith/krakend-martian": {
+            "modifier/martian": {
               "header.Filter": {
                 "scope": ["request"],
                 "name": "country",

@@ -9,7 +9,7 @@
     "phone": "phone_service"
   },
   "extra_config": {
-    "github_com/devopsfaith/krakend-cors": {
+    "security/cors": {
       "allow_origins": ["*"],
       "allow_headers": ["*"]
     }
