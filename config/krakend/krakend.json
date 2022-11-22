@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "timeout": "120s",
+  "timeout": "300s",
   "port": {{ .service.port }},
   "extra_config": {{ marshal .service.extra_config }},
   "endpoints": [
