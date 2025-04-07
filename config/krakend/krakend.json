@@ -114,6 +114,40 @@
     {{ end }}
     {{ end }}
 
+    {{ range $method := .endpoint_patient_vn.methods }}
+    {{ range $endpoint := $.endpoint_patient_vn.endpoints }}
+    {
+      "endpoint": "/patient-vn/{{ $endpoint }}",
+      "method": "{{ $method }}",
+      "output_encoding": "no-op",
+      "input_query_strings": ["*"],
+      "input_headers":["*"],
+      "backend": [
+        {
+          "encoding": "no-op",
+          "host": ["{{ $.service.hosts.patient_vn }}"],
+          "url_pattern": "/api/{{ $endpoint }}",
+          "extra_config": {
+            "modifier/martian": {
+              "header.Filter": {
+                "scope": ["request"],
+                "name": "country",
+                "value": "VN",
+                "modifier": {
+                  "url.Modifier": {
+                    "scope": ["request"],
+                    "host": "{{ $.service.hosts.patient_vn }}"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {{ end }}
+    {{ end }}
+
     {
       "endpoint": "/limited-endpoint",
       "output_encoding": "no-op",
